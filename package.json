@@ -1,0 +1,23 @@
+{
+  "name": "jasmine-testing-fundamentals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jasmine-browser-runner serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAIPRANAY-GANGULA/Jasmine-Testing-Fundamentals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SAIPRANAY-GANGULA/Jasmine-Testing-Fundamentals/issues"
+  },
+  "homepage": "https://github.com/SAIPRANAY-GANGULA/Jasmine-Testing-Fundamentals#readme",
+  "devDependencies": {
+    "jasmine-browser-runner": "^1.1.0",
+    "jasmine-core": "^4.2.0"
+  }
+}
