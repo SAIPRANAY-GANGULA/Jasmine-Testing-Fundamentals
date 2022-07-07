@@ -145,4 +145,34 @@ describe("calculator.js", () => {
     expect(calculator.total).toMatch(/-?\d+/);
     expect(typeof calculator.total).toMatch("numbe");
   });
+
+  it("should return the total as value", function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator.total).toEqual(jasmine.anything());
+    //expect(null).toEqual(jasmine.anything()); // false
+    //expect(undefined).toEqual(jasmine.anything()); // false
+  });
+
+  //any Matcher
+  it("should be an instance ", function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator).toEqual(jasmine.any(Object));
+    expect(calculator).toEqual(jasmine.any(Calculator));
+    expect(calculator.total).toEqual(jasmine.any(Number));
+  });
+
+  //objectContaining
+  it("should contain total as key", function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator).toEqual(
+      jasmine.objectContaining({
+        total: 10,
+      })
+    );
+
+    expect(typeof calculator.total).toEqual(jasmine.stringContaining("numb"));
+  });
 });
