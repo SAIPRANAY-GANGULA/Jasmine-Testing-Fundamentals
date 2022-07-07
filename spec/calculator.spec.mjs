@@ -1,4 +1,27 @@
-import {ArithmeticError, Calculator} from "../src/calculator.js";
+import { ArithmeticError, Calculator } from "../src/calculator.js";
+
+export const CustomMatcher = {
+  toBeCalculator: function () {
+    return {
+      compare: function (actual, expected) {
+        const result = {
+          pass: false,
+          message: "",
+        };
+
+        if (actual instanceof Calculator) {
+          result.pass = true;
+          result.message = `Expected ${actual} not to be instance of calculator`;
+        } else {
+          result.pass = false;
+          result.message = `Expected ${actual} to be instance of calculator`;
+        }
+
+        return result;
+      },
+    };
+  },
+};
 
 // Test Suite: Group of Specs
 describe("calculator.js", () => {
@@ -174,5 +197,14 @@ describe("calculator.js", () => {
     );
 
     expect(typeof calculator.total).toEqual(jasmine.stringContaining("numb"));
+  });
+
+  //custom Matcher
+  it("should be instance of calculator", function () {
+    jasmine.addMatchers(CustomMatcher);
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator).toBeCalculator();
+    expect(calculator.total).not.toBeCalculator();
   });
 });
